@@ -17,7 +17,7 @@ interface NoteContextType {
   notes: NoteType[],
   selectedNote: NoteType | null,
   addNote: (note: NoteType) => void,
-  updateNote: (id: string) => void,
+  updateNote: (id: string, note: NoteType) => void,
   deleteRecord: (id: string) => void,
   selectNote: (id: string) => void,
 }
@@ -56,7 +56,7 @@ export const NoteProvider = ({
 
   const addNote = async (note: NoteType) => {
     const response = await fetch(BASE_URL, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(note),
       headers: {
         'Content-Type': 'application/json'
@@ -73,8 +73,33 @@ export const NoteProvider = ({
     }
   }
 
+  const updateNote = async (id: string, note: NoteType) => {
+    const response = await fetch(`${BASE_URL}/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(note),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    try {
+      if(response.ok) {
+        const newNote = await response.json()
+        setNotes((prev) => prev.map(prevNote => {
+          if(prevNote._id === id) {
+            return newNote
+          } else {
+            return prevNote
+          }
+        }))
+      }
+    } catch (err) {
+      throw new Error(`Could not update note: ${err}`)
+    }
+  }
+
   return (
-    <NoteContext.Provider value={{notes, selectedNote, addNote, selectNote}}>
+    <NoteContext.Provider value={{notes, selectedNote, addNote, updateNote, selectNote}}>
       {children}
     </NoteContext.Provider>
   )

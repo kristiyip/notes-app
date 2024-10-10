@@ -4,13 +4,13 @@ import { useNotes } from '../contexts/note-context';
 export const NoteForm = (): React.ReactElement => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const { selectedNote, addNote, selectNote } = useNotes();
+
+  const { selectedNote, addNote, selectNote, updateNote } = useNotes();
 
   useEffect(() => {
     if(selectedNote) {
       setTitle(selectedNote.title)
       setContent(selectedNote.content)
-      selectNote("")
     }
   }, [selectedNote])
 
@@ -28,9 +28,23 @@ export const NoteForm = (): React.ReactElement => {
     setContent('');
   }
 
+  const handleUpdate = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newNote = {
+      title: title,
+      content: content,
+      date: new Date().toDateString()
+    }
+
+    if(selectedNote?._id) {
+      updateNote(selectedNote._id, newNote)
+    }
+  }
+
   return (
     <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl'>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-4" onSubmit={!selectedNote ? handleSubmit : handleUpdate}>
         <div className='flex flex-col'>
           <label className='font-bold'>Title</label>
           <input
@@ -47,14 +61,32 @@ export const NoteForm = (): React.ReactElement => {
             onChange={(e) => setContent(e.target.value)}
           /> 
         </div>
-        <div className='flex justify-end'>
-          <button 
-            className='border-black border px-8 py-1 rounded-full'
-            type='submit'
-          >
-            Add
-          </button>
-        </div>
+          {
+            !selectedNote ? (
+              <div className='flex justify-end'>
+                <button 
+                  className='border-black border px-8 py-1 rounded-full'
+                  type='submit'
+                >
+                  Add
+                </button>
+              </div>
+            ) : (
+              <div className='flex justify-between'>
+                <button 
+                  className='border-black border px-8 py-1 rounded-full'
+                >
+                  Cancel
+                </button>
+                <button 
+                  className='border-black border px-8 py-1 rounded-full'
+                  type='submit'
+                >
+                  Update
+                </button>
+              </div>
+            )
+          }
       </form>
     </div>
   )
