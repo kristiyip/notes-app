@@ -51,4 +51,19 @@ router.put('/:id', async (req: Request, res: Response) => {
   }
 })
 
+//@ts-ignore
+// Route for deleting a note in db
+router.delete('/:id', async(req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const note = await NoteModel.findByIdAndDelete(id);
+
+    if(!note) return res.status(404).send();
+
+    res.status(200).send(note)
+  } catch (err) {
+    res.status(500).send(err);
+  }
+})
+
 export default router;
