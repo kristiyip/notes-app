@@ -1,17 +1,25 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { 
+  createContext, 
+  useCallback,
+  useContext, 
+  useEffect, 
+  useState 
+} from 'react';
 
 export interface NoteType {
   _id?: string,
   title: string,
   content: string,
-  date: Date
+  date: string
 }
 
 interface NoteContextType {
   notes: NoteType[],
+  selectedNote: NoteType | null,
   addNote: (note: NoteType) => void,
   updateNote: (id: string) => void,
   deleteRecord: (id: string) => void,
+  selectNote: (id: string) => void,
 }
 
 export const NoteContext = createContext<NoteContextType | null>(null)
@@ -22,6 +30,16 @@ export const NoteProvider = ({
   children
 }: { children: React.ReactNode }) => {
   const [notes, setNotes] = useState<NoteType[]>([])
+  const [selectedNote, setSelectedNote] = useState<NoteType | null>(null)
+
+  const selectNote = useCallback((noteId: string) => {
+    let selected = notes.filter(note => note?._id === noteId)
+
+    if(selected.length === 0 && noteId !== "") {
+      throw new Error('Selected note not found')
+    }
+    setSelectedNote(selected[0])
+  }, [notes])
 
   const fetchNotes = async () => {
     const response = await fetch(`${BASE_URL}/getAllNotes`);
@@ -56,7 +74,7 @@ export const NoteProvider = ({
   }
 
   return (
-    <NoteContext.Provider value={{notes, addNote}}>
+    <NoteContext.Provider value={{notes, selectedNote, addNote, selectNote}}>
       {children}
     </NoteContext.Provider>
   )
