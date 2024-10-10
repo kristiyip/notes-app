@@ -40,6 +40,14 @@ export const NoteForm = (): React.ReactElement => {
     if(selectedNote?._id) {
       updateNote(selectedNote._id, newNote)
     }
+
+    setTitle('');
+    setContent('');
+  }
+
+  const handleCancelUpdate = () => {
+    setTitle('');
+    setContent('');
   }
 
   return (
@@ -75,6 +83,8 @@ export const NoteForm = (): React.ReactElement => {
               <div className='flex justify-between'>
                 <button 
                   className='border-black border px-8 py-1 rounded-full'
+                  type="button"
+                  onClick={() => handleCancelUpdate()}
                 >
                   Cancel
                 </button>
