@@ -43,11 +43,13 @@ export const NoteForm = (): React.ReactElement => {
 
     setTitle('');
     setContent('');
+    selectNote('');
   }
 
   const handleCancelUpdate = () => {
     setTitle('');
     setContent('');
+    selectNote('');
   }
 
   return (
