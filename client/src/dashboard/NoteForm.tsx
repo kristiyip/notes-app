@@ -53,12 +53,12 @@ export const NoteForm = (): React.ReactElement => {
   }
 
   return (
-    <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl bg-white'>
+    <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl bg-[#d6c9a3]'>
       <form className="flex flex-col gap-4" onSubmit={!selectedNote ? handleSubmit : handleUpdate}>
         <div className='flex flex-col'>
           <label className='font-bold'>Title</label>
           <input
-            className='border-black border rounded-full px-2 py-1'
+            className='border-black border rounded-full px-2 py-1 bg-[#d6c9a3]'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -66,7 +66,7 @@ export const NoteForm = (): React.ReactElement => {
         <div className='flex flex-col'>
           <label className='font-bold'>Content</label>
           <textarea
-            className='overflow-y-auto border-black border rounded-xl h-44 p-2'
+            className='overflow-y-auto border-black border rounded-xl h-44 p-2 bg-[#d6c9a3]'
             value={content}
             onChange={(e) => setContent(e.target.value)}
           /> 
@@ -75,7 +75,7 @@ export const NoteForm = (): React.ReactElement => {
             !selectedNote ? (
               <div className='flex justify-end'>
                 <button 
-                  className='border-black border px-8 py-1 rounded-full'
+                  className='border-black border px-8 py-1 rounded-full bg-[#d6c9a3]'
                   type='submit'
                 >
                   Add
@@ -91,7 +91,7 @@ export const NoteForm = (): React.ReactElement => {
                   Cancel
                 </button>
                 <button 
-                  className='border-black border px-8 py-1 rounded-full'
+                  className='border-black border px-8 py-1 rounded-full bg-[#76a8a5]'
                   type='submit'
                 >
                   Update

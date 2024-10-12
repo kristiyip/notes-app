@@ -4,10 +4,13 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-image': 'radial-gradient(black 1px, transparent 0)',
+        'custom-image': 'radial-gradient(#b3b09b 1.5px, transparent 0)',
       },
       backgroundSize: {
         'custom-size': '40px 40px',
+      },
+      backgroundPosition: {
+        'custom-position': '4px 4px',
       },
     },
   },
