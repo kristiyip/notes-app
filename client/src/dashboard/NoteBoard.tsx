@@ -12,8 +12,6 @@ export const NoteBoard = (): React.ReactElement => {
     deleteNote(id)
     selectNote('')
   }
-
-  console.log(notes)
   
   return (
     <div className="grid grid-cols-3 gap-4 w-full auto-rows-max overflow-y-auto">
