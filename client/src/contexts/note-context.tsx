@@ -18,7 +18,7 @@ interface NoteContextType {
   selectedNote: NoteType | null,
   addNote: (note: NoteType) => void,
   updateNote: (id: string, note: NoteType) => void,
-  deleteRecord: (id: string) => void,
+  deleteNote: (id: string) => void,
   selectNote: (id: string) => void,
 }
 
@@ -98,8 +98,23 @@ export const NoteProvider = ({
     }
   }
 
+  const deleteNote = async (id:string) => {
+    const response = await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+    })
+
+    try {
+      if(response.ok) {
+        const deleteNote = await response.json()
+        setNotes((prev) => prev.filter(note => note._id !== deleteNote._id))
+      }
+    } catch (err) {
+      throw new Error(`Could not delete note: ${err}`)
+    }
+  }
+
   return (
-    <NoteContext.Provider value={{notes, selectedNote, addNote, updateNote, selectNote}}>
+    <NoteContext.Provider value={{notes, selectedNote, addNote, updateNote, deleteNote, selectNote}}>
       {children}
     </NoteContext.Provider>
   )

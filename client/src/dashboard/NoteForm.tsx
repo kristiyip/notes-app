@@ -53,7 +53,7 @@ export const NoteForm = (): React.ReactElement => {
   }
 
   return (
-    <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl'>
+    <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl bg-white'>
       <form className="flex flex-col gap-4" onSubmit={!selectedNote ? handleSubmit : handleUpdate}>
         <div className='flex flex-col'>
           <label className='font-bold'>Title</label>
