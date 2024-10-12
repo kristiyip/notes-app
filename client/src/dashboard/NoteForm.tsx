@@ -23,7 +23,8 @@ export const NoteForm = (): React.ReactElement => {
     const newNote = {
       title: title,
       content: content,
-      date: new Date().toDateString()
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
 
     addNote(newNote)
@@ -37,7 +38,7 @@ export const NoteForm = (): React.ReactElement => {
     const newNote = {
       title: title,
       content: content,
-      date: new Date().toDateString()
+      updatedNote: new Date()
     }
 
     if(selectedNote?._id) {

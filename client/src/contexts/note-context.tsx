@@ -10,7 +10,8 @@ export interface NoteType {
   _id?: string,
   title: string,
   content: string,
-  date: string
+  createdAt?: Date,
+  updatedAt?: Date
 }
 
 interface NoteContextType {

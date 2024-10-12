@@ -12,9 +12,11 @@ export const NoteBoard = (): React.ReactElement => {
     deleteNote(id)
     selectNote('')
   }
+
+  console.log(notes)
   
   return (
-    <div className="grid grid-cols-3 gap-4 auto-rows-max overflow-y-auto">
+    <div className="grid grid-cols-3 gap-4 w-full auto-rows-max overflow-y-auto">
       {notes.map((note, i) => (
         <div
           id={i.toString()}
@@ -34,7 +36,7 @@ export const NoteBoard = (): React.ReactElement => {
               {note.content}
             </div>
             <div className="text-end text-sm">
-              {new Date(note.date).toLocaleDateString()}
+              {note?.updatedAt ? new Date(note.updatedAt).toLocaleDateString() : ''}
             </div>
           </div>
         </div>
