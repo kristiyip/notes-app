@@ -12,8 +12,6 @@ export const NoteBoard = (): React.ReactElement => {
     deleteNote(id)
     selectNote('')
   }
-
-  console.log(selectedNote)
   
   return (
     <div className="grid grid-cols-3 gap-4 auto-rows-max overflow-y-auto">
@@ -35,7 +33,7 @@ export const NoteBoard = (): React.ReactElement => {
             <div className="break-words overflow-y-auto h-full whitespace-pre-wrap">
               {note.content}
             </div>
-            <div className="text-end">
+            <div className="text-end text-sm">
               {new Date(note.date).toLocaleDateString()}
             </div>
           </div>

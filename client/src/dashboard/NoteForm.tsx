@@ -61,16 +61,18 @@ export const NoteForm = (): React.ReactElement => {
         <div className='flex flex-col'>
           <label className='font-bold'>Title</label>
           <input
-            className='border-[#d4a373] border rounded-full px-2 py-1 bg-[#faedcd]'
+            className='border-[#d4a373] focus:outline-none focus:ring focus:ring-[#bc6c25] border rounded-full px-2 py-1 bg-[#faedcd]'
             value={title}
+            required
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className='flex flex-col'>
           <label className='font-bold'>Content</label>
           <textarea
-            className='overflow-y-auto border-[#d4a373] border rounded-xl min-h-44 max-h-[32rem] p-2 bg-[#faedcd]'
+            className='overflow-y-auto border-[#d4a373] focus:outline-none focus:ring focus:ring-[#bc6c25] border rounded-xl min-h-44 max-h-[32rem] p-2 bg-[#faedcd]'
             value={content}
+            required
             onChange={(e) => setContent(e.target.value)}
           /> 
         </div>
@@ -78,7 +80,7 @@ export const NoteForm = (): React.ReactElement => {
             !selectedNote ? (
               <div className='flex justify-end'>
                 <button 
-                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
+                  className='border-[#d4a373] text-white border px-8 py-1 rounded-full bg-[#5e674a] hover:bg-[#445128] active:bg-[#283618]'
                   type='submit'
                 >
                   Add
@@ -87,14 +89,14 @@ export const NoteForm = (): React.ReactElement => {
             ) : (
               <div className='flex justify-between'>
                 <button 
-                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
+                  className='text-white px-8 py-1 rounded-full bg-[#dda15e] hover:bg-[#dc8f42] active:bg-[#db7c26]'
                   type="button"
                   onClick={() => handleCancelUpdate()}
                 >
                   Cancel
                 </button>
                 <button 
-                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
+                  className='text-white px-8 py-1 rounded-full bg-[#5e674a] hover:bg-[#445128] active:bg-[#283618]'
                   type='submit'
                 >
                   Update
