@@ -11,6 +11,9 @@ export const NoteForm = (): React.ReactElement => {
     if(selectedNote) {
       setTitle(selectedNote.title)
       setContent(selectedNote.content)
+    } else {
+      setTitle('')
+      setContent('')
     }
   }, [selectedNote])
 
@@ -53,12 +56,12 @@ export const NoteForm = (): React.ReactElement => {
   }
 
   return (
-    <div className='w-96 border-black border-2 border-solid p-8 mr-8 h-auto rounded-xl bg-[#d6c9a3]'>
+    <div className='w-96 border-[#d4a373] border-2 border-solid p-8 mr-8 h-auto max-h-full rounded-xl bg-[#fefae0]'>
       <form className="flex flex-col gap-4" onSubmit={!selectedNote ? handleSubmit : handleUpdate}>
         <div className='flex flex-col'>
           <label className='font-bold'>Title</label>
           <input
-            className='border-black border rounded-full px-2 py-1 bg-[#d6c9a3]'
+            className='border-[#d4a373] border rounded-full px-2 py-1 bg-[#faedcd]'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -66,7 +69,7 @@ export const NoteForm = (): React.ReactElement => {
         <div className='flex flex-col'>
           <label className='font-bold'>Content</label>
           <textarea
-            className='overflow-y-auto border-black border rounded-xl h-44 p-2 bg-[#d6c9a3]'
+            className='overflow-y-auto border-[#d4a373] border rounded-xl min-h-44 max-h-[32rem] p-2 bg-[#faedcd]'
             value={content}
             onChange={(e) => setContent(e.target.value)}
           /> 
@@ -75,7 +78,7 @@ export const NoteForm = (): React.ReactElement => {
             !selectedNote ? (
               <div className='flex justify-end'>
                 <button 
-                  className='border-black border px-8 py-1 rounded-full bg-[#d6c9a3]'
+                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
                   type='submit'
                 >
                   Add
@@ -84,14 +87,14 @@ export const NoteForm = (): React.ReactElement => {
             ) : (
               <div className='flex justify-between'>
                 <button 
-                  className='border-black border px-8 py-1 rounded-full'
+                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
                   type="button"
                   onClick={() => handleCancelUpdate()}
                 >
                   Cancel
                 </button>
                 <button 
-                  className='border-black border px-8 py-1 rounded-full bg-[#76a8a5]'
+                  className='border-[#d4a373] border px-8 py-1 rounded-full bg-[#d4a373]'
                   type='submit'
                 >
                   Update

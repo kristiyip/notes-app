@@ -10,6 +10,7 @@ export const NoteBoard = (): React.ReactElement => {
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.stopPropagation()
     deleteNote(id)
+    selectNote('')
   }
 
   console.log(selectedNote)
@@ -19,7 +20,7 @@ export const NoteBoard = (): React.ReactElement => {
       {notes.map((note, i) => (
         <div
           id={i.toString()}
-          className="border-[#85826e] border-2 px-4 py-2 h-72 min-w-60 rounded-xl cursor-pointer bg-[#d6c9a3]"
+          className="border-[#d4a373] border-2 px-4 py-2 h-72 min-w-60 rounded-xl cursor-pointer bg-[#fefae0]"
           onClick={(e) => handleSelectNote(note?._id ?? "")}
         >
           <div className="flex justify-end h-6">

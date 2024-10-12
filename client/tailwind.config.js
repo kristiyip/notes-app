@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-image': 'radial-gradient(#b3b09b 1.5px, transparent 0)',
+        'custom-image': 'radial-gradient(#ccd5ae 1.5px, transparent 0)',
       },
       backgroundSize: {
         'custom-size': '40px 40px',
