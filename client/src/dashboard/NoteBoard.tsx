@@ -15,11 +15,11 @@ export const NoteBoard = (): React.ReactElement => {
   }
   
   return (
-    <div className='grid grid-cols-3 gap-4 w-full auto-rows-max overflow-y-auto'>
+    <div className='grid lg:grid-cols-3 md:grid-cols-1 gap-4 w-full auto-rows-max overflow-y-auto'>
       {notes.map((note, i) => (
         <div
           id={i.toString()}
-          className='border-[#d4a373] border-2 py-2 h-72 min-w-60 rounded-xl cursor-pointer bg-[#fefae0]'
+          className='border-[#d4a373] border-2 py-2 h-72 min-w-40 rounded-xl cursor-pointer bg-[#fefae0]'
           onClick={(e) => handleSelectNote(note?._id ?? "")}
         >
           <div className='flex justify-end h-6 px-2'>
