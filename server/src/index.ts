@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-import notes from '../routes/notes'
+import notes from './routes/notes'
 
 const app: Express = express();
 const port = process.env.PORT || 3001
