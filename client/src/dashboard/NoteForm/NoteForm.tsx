@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNotes } from '../contexts/note-context';
+import { useNotes } from '../../contexts/note-context';
 
 export const NoteForm = (): React.ReactElement => {
   const [title, setTitle] = useState('')
