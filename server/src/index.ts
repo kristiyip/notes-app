@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(express.json());
 app.use(cors());
-const mongoURI: string = process.env.MONGO_URI || ""
+const mongoURI: string = process.env.MONGODB_URI || ""
 
 mongoose
   .connect(mongoURI)
