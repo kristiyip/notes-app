@@ -1,4 +1,4 @@
-import { useNotes } from '../../contexts/note-context'
+import { useNotes } from '../contexts/note-context'
 import CloseIcon from '@mui/icons-material/Close'
 
 export const NoteBoard = (): React.ReactElement => {

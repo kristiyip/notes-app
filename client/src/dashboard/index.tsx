@@ -1,5 +1,5 @@
-import { NoteForm } from './NoteForm/NoteForm'
-import { NoteBoard } from './NoteBoard/NoteBoard'
+import { NoteForm } from './NoteForm'
+import { NoteBoard } from './NoteBoard'
 
 
 export const Dashboard = (): React.ReactElement => {
