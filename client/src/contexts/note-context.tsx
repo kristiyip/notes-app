@@ -5,7 +5,6 @@ import {
   useEffect, 
   useState 
 } from 'react';
-import * as dotenv from 'dotenv';
 
 export interface NoteType {
   _id?: string,
@@ -24,15 +23,11 @@ interface NoteContextType {
   selectNote: (id: string) => void,
 }
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction: boolean = import.meta.env.PROD
 
 export const NoteContext = createContext<NoteContextType | null>(null)
 
-if (!isProduction) {
-  dotenv.config();
-}
-
-const BASE_URL = isProduction ? `${process.env.BACKEND_URL}/api/notes` : 'http://localhost:3001/api/notes' 
+const BASE_URL: string = isProduction ? `${import.meta.env.VITE_BACKEND_URL}/api/notes` : 'http://localhost:3001/api/notes' 
 
 export const NoteProvider = ({
   children
