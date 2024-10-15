@@ -25,7 +25,7 @@ interface NoteContextType {
 
 export const NoteContext = createContext<NoteContextType | null>(null)
 
-const BASE_URL = 'http://localhost:3001/notes'
+const BASE_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001/api/notes' : `${process.env.NODE_ENV}/api/notes`
 
 export const NoteProvider = ({
   children
