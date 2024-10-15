@@ -1,7 +1,10 @@
 {
-  "files": ["./src/NoteForm/NoteForm.tsx"],
+  "files": ["./src/App.tsx"],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "outDir": "./build"
+  }
 }
